@@ -8,7 +8,15 @@ function AppHeader() {
 
     const [searchRes, setSearchRes] = useState('')
 
-   
+    var d = new Date();
+    var timezoneOffset = d.getTimezoneOffset();
+    d.setMinutes(d.getMinutes() + timezoneOffset);
+    console.log('UTC: '+d);
+
+    var thai_offset =7*60;
+    d.setMinutes(d.getMinutes() + thai_offset);
+    console.log('UTC: '+d);
+
     return (
         <div>
             <div class="appheader">

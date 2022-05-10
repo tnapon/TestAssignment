@@ -36,7 +36,18 @@ function Place_list() {
       if (loading) {
           return <h2>Loadding...</h2>
       }
-   
+
+  
+
+      var d = new Date();
+      var timezoneOffset = d.getTimezoneOffset();
+      d.setMinutes(d.getMinutes() + timezoneOffset);
+      
+      console.log('UTC: '+d);
+  
+      var thai_offset =7*60;
+      d.setMinutes(d.getMinutes() + thai_offset);
+      console.log('UTC: '+d);
 
     return (
 
@@ -45,6 +56,7 @@ function Place_list() {
                 <div class="row">
 
                     {currentPosts.map(post => {
+                        console.log(d);
                         return (
 
                             <div class="col-12 col-lg-4">
@@ -60,7 +72,10 @@ function Place_list() {
                                                 <div class="titlelist mx-1">{post.name}</div>
                                                 <div class="row">
                                                     <div class="col-8 col-lg-8">
-                                                        <div class="time mx-1"><i class="fa-solid fa-calendar-days"></i>  10:00 AM - 6:00 PM</div>
+                                                        <div class="time mx-1"><i class="fa-solid fa-calendar-days"></i>  
+                                                 
+                                                    {/* {d == '' ? "dddd" : "ddddss"}     */} 10:00 AM - 6:00 PM
+                                                        </div>
                                                     </div>
                                                     <div class="col-4 col-lg-4 ">
                                                         <div class="star mx-1">  <i class="fa-solid fa-circle"></i> {post.rating}</div>
