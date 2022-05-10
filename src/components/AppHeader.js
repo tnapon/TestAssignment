@@ -8,24 +8,7 @@ function AppHeader() {
 
     const [searchRes, setSearchRes] = useState('')
 
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(21);
-
-  
-    
-    // Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    // const currentPosts = Posts.slice(indexOfFirstPost, indexOfLastPost);
-
-    // Change page
-    const paginate = pageNumber => setCurrentPage(pageNumber);
-    if (loading) {
-        return <h2>Loadding...</h2>
-    }
-
+   
     return (
         <div>
             <div class="appheader">
@@ -94,7 +77,9 @@ function AppHeader() {
             </div >
 
             <div>
-                <div class="container cards ">
+                {searchRes == ""
+                ?<Place_list/>:
+                  <div class="container cards ">
                     <div class="row">
                         {Posts.filter((val) => {
                             if (searchRes == "") {
@@ -152,12 +137,14 @@ function AppHeader() {
                         })}
 
                     </div>
-                    <Pagination
+                    {/* <Pagination
                         postsPerPage={postsPerPage}
                         totalPosts={Posts.length}
                         paginate={paginate}
-                    />
+                    /> */}
                 </div>
+                }
+              
 
             </div >
         </div>
